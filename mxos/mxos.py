@@ -38,7 +38,7 @@ from distutils.version import LooseVersion
 
 
 # Application version
-ver = '1.0.17'
+ver = '0.1.0'
 
 # Default paths to Mercurial and Git
 hg_cmd = 'hg'
@@ -73,9 +73,9 @@ regex_mxos_url = r'^(https?)://([\w\-\.]*mxos\.(co\.uk|org|com))/(users|teams)/(
 regex_build_url = r'^(https?://([\w\-\.]*mxos\.(co\.uk|org|com))/(users|teams)/([\w\-]{1,32})/(repos|code)/([\w\-]+))/builds/?([\w\-]{6,40}|tip)?/?$'
 
 # base url for all mxos related repos (used as sort of index)
-mxos_base_url = 'https://github.com/MXCHIP'
+mxos_base_url = 'https://code.aliyun.com/mxos'
 # default MXOS OS url
-mxos_os_url = 'https://github.com/MXCHIP/mxos.git'
+mxos_os_url = 'https://code.aliyun.com/mxos/mxos.git'
 # default mxos component url
 mxos_lib_url = 'https://mxos.org/users/mxos_official/code/mxos/builds/'
 # mxos SDK tools needed for programs based on mxos SDK component
@@ -1635,7 +1635,7 @@ def _run_make(arg_list):
 
 # Subparser handling
 parser = argparse.ArgumentParser(prog='mxos',
-    description="Code management tool for MXCHIP MXOS - https://github.com/MXCHIP/mxos\nversion %s\n\nUse 'mxos <command> -h|--help' for detailed help.\nOnline manual and guide available at https://github.com/MXCHIP/mxos-cube" % ver,
+    description="Code management tool for MXCHIP MXOS - https://code.aliyun.com/mxos/mxos\nversion %s\n\nUse 'mxos <command> -h|--help' for detailed help.\nOnline manual and guide available at https://github.com/MXCHIP/mxos-cube" % ver,
     formatter_class=argparse.RawTextHelpFormatter)
 subparsers = parser.add_subparsers(title="Commands", metavar="           ")
 parser.add_argument("--version", action="store_true", dest="version", help="print version number and exit")
@@ -1808,7 +1808,7 @@ def import_(url, path=None, mirror=None, ignore=False, depth=None, protocol=None
     global mxos_os_mirror
     global cwd_root
 
-    # translate 'mxos' to https://github.com/MXCHIP
+    # translate 'mxos' to https://code.aliyun.com/mxos
     if not Repo.isurl(url) and not os.path.exists(url):
         url = mxos_base_url+'/'+url+'.git'
 
@@ -1891,7 +1891,7 @@ def import_(url, path=None, mirror=None, ignore=False, depth=None, protocol=None
         "(GitHub, Bitbucket, mxos.org) into an existing program.\n"
         "Use 'mxos import <URL>' to import as a program"))
 def add(url, path=None, ignore=False, depth=None, protocol=None, top=True):
-     # translate 'mxos' to https://github.com/MXCHIP
+     # translate 'mxos' to https://code.aliyun.com/mxos
     if not Repo.isurl(url) and not os.path.exists(url):
         url = mxos_base_url+'/'+url+'.git'
         
